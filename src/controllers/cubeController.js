@@ -16,4 +16,9 @@ router.post('/create', (req, res)=>{
     res.redirect('/');
 });//with req.body we get the data from the form
 
+router.get('/:cubeId/details', (req, res)=>{
+    const cube=cubeManager.getOne(req.params.cubeId);
+    res.render('details', cube);
+})
+
 module.exports=router;
