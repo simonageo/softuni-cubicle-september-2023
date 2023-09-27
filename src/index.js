@@ -1,19 +1,17 @@
 const express=require('express');
-const handlebars=require('express-handlebars');
-const path=require('path');
 
 const app=express();
 const PORT=5000;
 
 //Express config (static config)
-app.use(express.static(path.resolve(__dirname, 'public')));
+const expressConfig=require('./config/exspressConfig');
+expressConfig(app);
+
+//require('./config/exspressConfig')(app); //same as the previous two 
 
 //Handlebars config
-app.engine('hbs', handlebars.engine({
-    extname: 'hbs',
-}));
-app.set('view engine', 'hbs');
-app.set('views', 'src/views')
+const handlebarsConfig=require('./config/handlebarsConfig');
+handlebarsConfig(app);
 
 //Routes
 app.get('/', (req, res)=>{
