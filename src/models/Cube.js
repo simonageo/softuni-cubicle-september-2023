@@ -1,3 +1,4 @@
+const { default: mongoose } = require('mongoose');
 const mognoose = require('mongoose');
 
 const cubeSchema = new mognoose.Schema({
@@ -21,10 +22,14 @@ const cubeSchema = new mognoose.Schema({
             message: 'imageurl must start with http:// or https://'
         }
     },
-    difficultyLevel:{
+    difficultyLevel: {
         type: Number,
         required: true,
         min: 1,
         max: 6
     }
-})
+});
+
+const Cube = mongoose.model('Cube', cubeSchema);
+
+module.exports = Cube;
