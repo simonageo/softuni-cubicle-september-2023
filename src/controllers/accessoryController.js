@@ -7,7 +7,7 @@ router.get('/create', (req, res) => {
 router.post('/create', (req, res)=>{
     const body=req.body;
 
-    //TODO add accessory db
+    //TODO add accessory data to db
     res.redirect('/')
 })
 
