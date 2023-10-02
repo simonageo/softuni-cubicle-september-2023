@@ -1,6 +1,6 @@
 const express=require('express');
 const routes=require('./routes');
-
+const dbConnect=require('./config/dbConfig');
 const app=express();
 const PORT=5000;
 
@@ -13,6 +13,11 @@ expressConfig(app);
 //Handlebars config
 const handlebarsConfig=require('./config/handlebarsConfig');
 handlebarsConfig(app);
+
+//db config
+dbConnect()
+    .then(()=>console.log('DB Connected successfully'))
+    .catch(err=>console.log('DB error: ', err));
 
 //Routes
 app.use(routes);
